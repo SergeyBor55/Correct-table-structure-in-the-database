@@ -3,7 +3,7 @@
 
 SELECT authors.name AS popular_authors FROM authors INNER JOIN books ON authors.id = books.authors_id 
 INNER JOIN books_issued ON books.id = books_issued.book_id 
-WHERE books_issued.date_of_issue LIKE ('2018%') 
+WHERE books_issued.date_of_issue LIKE '2018%'
 GROUP BY books.authors_id ORDER BY COUNT(books.authors_id) DESC LIMIT 1
 
 
@@ -20,6 +20,6 @@ COUNT(books_issued.book_id) AS take_from_library FROM books
 INNER JOIN authors ON books.authors_id = authors.id 
 INNER JOIN publishings ON books.publishing_company_id = publishings.id 
 INNER JOIN books_issued ON books.id = books_issued.book_id 
-WHERE authors.name LIKE ('Михаил Булгаков')
+WHERE authors.name = 'Михаил Булгаков'
 GROUP BY books_issued.book_id
 HAVING take_from_library BETWEEN 1 AND 3
